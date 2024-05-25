@@ -1,8 +1,4 @@
-/*******************************************************************************************************/
-/* Author            : Ahmed khaled Hammad                                                             */
-/* Version           : V0.0.0                                                                          */
-/* Data              : 23 May 2022                                                                     */
-/* Description       : MUSART_Interface.c --> implementations                                          */
+/*******************************************************************************************************/                                       */
 /* Module  Features  :                                                                                 */
 /*      01- MSUART_voidInit                                                                            */
 /*      02- MUSART_voidEnable                                                                          */

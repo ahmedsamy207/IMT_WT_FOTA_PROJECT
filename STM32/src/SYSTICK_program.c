@@ -2,7 +2,7 @@
  * SYSTICK_program.c
  *
  *  Created on: Jan 21, 2024
- *      Author: Jimmy
+ *      Author: Philo
  */
 
 #include "STD_TYPES.h"

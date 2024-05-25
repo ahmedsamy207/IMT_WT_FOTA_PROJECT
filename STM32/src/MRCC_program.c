@@ -2,7 +2,7 @@
  * MRCC_program.c
  *
  *  Created on: Jan 15, 2024
- *      Author: philo
+ *      Author: Ahmed Samy
  */
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"

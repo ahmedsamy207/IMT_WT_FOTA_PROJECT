@@ -2,7 +2,7 @@
  * MRCC_private.h
  *
  *  Created on: Jan 15, 2024
- *      Author: philo
+ *      Author: Ahmed Samy
  */
 
 #ifndef MRCC_PRIVATE_H_
