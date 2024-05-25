@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WT FOTA Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333; /* Dark gray background color */
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-image: linear-gradient(135deg, #3498db, #e74c3c); /* Colorful gradient background */
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center; /* Align buttons to center */
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .file-upload {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .inputfile {
+            display: none;
+        }
+
+        .custom-button {
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+            margin-bottom: 20px;
+            width: calc(100% / 2 - 10px); /* Adjust width to fit 3 buttons in a row */
+            display: inline-block; /* Display buttons in the same line */
+        }
+
+        /* Different colors for each button */
+        .flash-button1, .flash-button2 {
+            background-color: #2ecc71; /* Green color for Flash button */
+        }
+
+        .erase-button1, .erase-button2 {
+            background-color: #e74c3c; /* Red color for Erase buttons */
+        }
+ 		.Launch-button1, .Launch-button2 {
+            background-color: #4c59b2; /* Red color for Erase buttons */
+        }
+
+        .choose-button, .upload-button {
+            background-color: #f39c12; /* Orange color for Choose a file and Upload File buttons */
+        }
+
+        .upload-button {
+            background-color: #3498db; /* Blue color for Upload File button */
+        }
+
+        .custom-button:hover {
+            filter: brightness(85%); /* Reduce brightness on hover */
+        }
+
+        #file-name {
+            color: #fff;
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FOTA Dashboard</h1>
+        <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <div class="file-upload">
+                <input type="file" name="fileToUpload" id="fileToUpload" class="inputfile" onchange="updateFileName()">
+                <label for="fileToUpload" class="custom-button choose-button">Choose a file</label>
+                <span id="file-name">No file chosen</span>
+            </div>
+            <button type="submit" class="custom-button upload-button">Upload File</button>
+        </form>
+        <button class="custom-button Launch-button1">Launch App 1</button>
+        <button class="custom-button Launch-button2">Launch App 2</button>
+        <button class="custom-button flash-button1">Flash To App 1</button>
+        <button class="custom-button flash-button2">Flash To App 2</button>
+        <button class="custom-button erase-button1">Erase App 1</button>
+        <button class="custom-button erase-button2">Erase App 2</button>
+        
+       <!-- Link to About Us page -->
+        <a href="about_us.html" class="custom-button">About Us</a>
+    </div>
+    <script>
+        function updateFileName() {
+            const fileInput = document.getElementById("fileToUpload");
+            const fileNameSpan = document.getElementById("file-name");
+            if (fileInput.files.length > 0) {
+                fileNameSpan.textContent = fileInput.files[0].name;
+            } else {
+                fileNameSpan.textContent = "No file chosen";
+            }
+        }
+
+        function validateForm() {
+            const fileInput = document.getElementById("fileToUpload");
+            if (fileInput.files.length === 0) {
+                alert("Please choose a file.");
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get('message');
+
+        if (message) {
+            alert(message);
+        }
+
+        document.querySelector(".flash-button1").addEventListener("click", function() {
+            sendData("A");
+        });
+        document.querySelector(".flash-button2").addEventListener("click", function() {
+            sendData("B");
+        });
+        document.querySelector(".Launch-button1").addEventListener("click", function() {
+            sendData("C");
+        });
+        document.querySelector(".Launch-button2").addEventListener("click", function() {
+            sendData("D");
+        });
+
+        document.querySelector(".erase-button1").addEventListener("click", function() {
+            sendData("E");
+        });
+
+        document.querySelector(".erase-button2").addEventListener("click", function() {
+            sendData("F");
+        });
+
+        function sendData(value) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "write_data.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    alert(xhr.responseText);
+                }
+            };
+            xhr.send("value=" + value);
+        }
+        
+    });
+    </script>
+
+</body>
+</html>
