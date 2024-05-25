@@ -56,8 +56,10 @@ This project demonstrates a comprehensive Firmware Over-The-Air (FOTA) update sy
 - **nodemcu**: Source code and firmware for the NodeMCU.
 - **stm32**: Source code and firmware for the STM32 microcontroller.
   
-## Project Structure
-- [Demo Video:](https://drive.google.com/file/d/1VjCncpm-L4wH0LUv51nTvP535gYxhjUJ/view?usp=drivesdk)
+## Demo Video
+
+[Google Drive](https://drive.google.com/file/d/1VjCncpm-L4wH0LUv51nTvP535gYxhjUJ/view?usp=drivesdk)
+
 ## Team
 
 - **Ahmed Samy Kamal** - [LinkedIn](https://www.linkedin.com/in/ahmedsamy207)
